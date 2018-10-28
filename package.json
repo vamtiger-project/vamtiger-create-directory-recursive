@@ -1,0 +1,52 @@
+{
+    "name": "vamtiger-create-directory-recursive",
+    "version": "0.0.1",
+    "description": "Recursively create directories.",
+    "main": "build",
+    "scripts": {
+        "test": "npm run test-bundle && npm run mocha",
+        "mocha": "mocha build/test --recursive",
+        "clean": "rm -rf build/*",
+        "build": "npm run clean && tsc",
+        "test-build": "tsc",
+        "build-types": "npm run clean && tsc --project tsconfig-declaration.json",
+        "test-build-types": "tsc --project tsconfig-declaration.json",
+        "commit": "npm run bundle && vamtiger-node-typescript-commit --push --publish --buildScript bundle",
+        "bundle": "npm run test && npm run build-types && vamtiger-bundle-typescript --relativePath --entryFilePath source/index.ts --bundleFilePath build/index.js --format cjs --sourcemap true --minify --copySourceMap",
+        "test-bundle": "npm run test-build && npm run test-build-types && vamtiger-bundle-typescript --relativePath --entryFilePath source/index.ts --bundleFilePath build/index.js --format cjs --sourcemap true --minify --copySourceMap",
+        "watch": "npm run clean && npm run build-types && vamtiger-bundle-typescript --relativePath --entryFilePath source/index.ts --bundleFilePath build/index.js --format cjs --sourcemap true --minify --copySourceMap --watch",
+        "test-watch": "npm run test-build && npm run test-build-types && vamtiger-bundle-typescript --relativePath --entryFilePath source/index.ts --bundleFilePath build/index.js --format cjs --sourcemap true --minify --copySourceMap --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vamtiger-project/vamtiger-create-directory-recursive.git"
+    },
+    "keywords": [
+        "vamtiger",
+        "create",
+        "directory",
+        "recursive"
+    ],
+    "author": "Vamtiger Immortalles",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vamtiger-project/vamtiger-create-directory-recursive/issues"
+    },
+    "homepage": "https://github.com/vamtiger-project/vamtiger-create-directory-recursive#readme",
+    "types": "build/index.d.ts",
+    "devDependencies": {
+        "@types/chai": "^4.1.7",
+        "@types/mocha": "^5.2.5",
+        "@types/node": "^10.12.0",
+        "chai": "^4.2.0",
+        "mocha": "^5.2.0",
+        "typescript": "^3.1.3",
+        "vamtiger-bash": "0.0.25",
+        "vamtiger-bundle-typescript": "0.0.25",
+        "vamtiger-get-directory-content-recursive": "0.0.9",
+        "vamtiger-node-typescript-commit": "0.0.65"
+    },
+    "dependencies": {
+        "vamtiger-create-directory": "0.0.5"
+    }
+}
