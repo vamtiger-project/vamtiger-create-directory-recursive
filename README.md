@@ -24,12 +24,16 @@ const createDirectory = require('vamtiger-create-directory-recursive').default;
 ```
 Creating a directory returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise):
 ```javascript
-createDirectory('/some/directory/path')
+createDirectory({
+        path: '/some/directory/path'
+    })
     .catch(handleError);
 ```
 Since [VAMTIGER Create Directory Recursive](https://github.com/vamtiger-project/vamtiger-create-directory-recursive) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), it can be more conveniently invoked within an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function):
 ```javascript
 async someAsyncFunction function() {
-    const bashResult = await createDirectory('/some/directory/path');
+    const bashResult = await createDirectory({
+        path: '/some/directory/path'
+    });
 }
 ```
